@@ -1,13 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-
-// export default function Home() {
-//   return <main>My name is jasjostr sinfhg</main>;
-// }
-
-// pages/index.jsx
-
+import Testimonials from "@/components/Testimonials";
 import React from "react";
 
 const HomePage = () => {
@@ -15,56 +9,28 @@ const HomePage = () => {
     <div>
       <Navbar />
       <main className="container mx-auto p-4">
-        <h1 className="text-2xl font-bold">Welcome to Jasjot Blog</h1>
-        <p>This is the home page.</p>
         <section className="container px-4 py-10 mx-auto lg:h-128 lg:space-x-8 lg:flex lg:items-center">
           <div className="w-full text-center lg:text-left lg:w-1/2 lg:-mt-8">
             <h1 className="text-3xl leading-snug text-gray-800 dark:text-gray-200 md:text-4xl">
-              A <span className="font-semibold">free repository</span> for
-              community
-              <br className="hidden lg:block" /> components using{" "}
-              <span className="font-semibold underline decoration-primary">
-                Tailwind CSS
-              </span>
+              Welcome to
+              <br className="hidden lg:block" />{" "}
+              <span className="font-semibold">Jasjot's Blog</span>
             </h1>
             <p className="mt-4 text-lg text-gray-500 dark:text-gray-300">
-              Open source Tailwind UI components and templates to
-              <br className="hidden lg:block" /> bootstrap your new apps,
-              projects or landing sites!
+              Confused on which course to take? I have got you covered. Browse
+              courses and find out the best course for you. Its free! Code With
+              Harry is my attempt to teach basics and those coding techniques to
+              people in short time which took me ages to learn.
             </p>
-            <div className="mt-6 bg-transparent border rounded-lg dark:border-gray-700 lg:w-2/3 focus-within:border-primary focus-within:ring focus-within:ring-primary dark:focus-within:border-primary focus-within:ring-opacity-20">
-              <form
-                action="https://www.creative-tim.com/twcomponents/search"
-                className="flex flex-wrap justify-between md:flex-row"
-              >
-                <input
-                  type="search"
-                  name="query"
-                  placeholder="Search Components"
-                  required="required"
-                  className="flex-1 h-10 px-4 m-1 text-gray-700 placeholder-gray-400 bg-transparent border-none appearance-none lg:h-12 dark:text-gray-200 focus:outline-none focus:placeholder-transparent focus:ring-0"
-                />
-                <button
-                  type="submit"
-                  className="flex items-center justify-center w-full p-2 m-1 text-white transition-colors duration-300 transform rounded-lg lg:w-12 lg:h-12 lg:p-0 bg-primary hover:bg-primary/70 focus:outline-none focus:bg-primary/70"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    ></path>
-                  </svg>
-                </button>
-              </form>
+            <div class="flex justify-center lg:justify-start mt-6">
+              <button class="px-3 py-2 lg:px-4 lg:py-3 bg-gray-900 text-gray-200 text-xs font-semibold rounded hover:text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-600 dark:hover:bg-gray-300">
+                Free Courses
+              </button>
+              <button class="px-3 py-2 mx-4 lg:px-4 lg:py-3 bg-gray-300 text-gray-900 text-xs font-semibold rounded hover:bg-gray-400">
+                Explore Blog
+              </button>
             </div>
+            <div className="mt-6 bg-transparent border rounded-lg dark:border-gray-700 lg:w-2/3 focus-within:border-primary focus-within:ring focus-within:ring-primary dark:focus-within:border-primary focus-within:ring-opacity-20"></div>
           </div>
           <div className="w-full mt-4 lg:mt-0 lg:w-1/2">
             <img
@@ -75,10 +41,8 @@ const HomePage = () => {
           </div>
         </section>
         <section className="py-7 text-center container">
-          <h2 className="text-2xl font-semibold">Pricing Plans</h2>
-          {/* <h3 className="text-sm font-medium my-2">
-            Choose the plan that suits you best
-          </h3> */}
+          <h2 className="text-4xl font-medium">Recommended Courses</h2>
+
           <div className="flex flex-wrap gap-10 justify-center mt-8 text-start">
             <div className="sm:max-w-[20rem] bg-white border border-gray-200 rounded-lg shadow overflow-hidden">
               <div className="relative" style={{ height: "200px" }}>
@@ -248,6 +212,7 @@ const HomePage = () => {
             </svg>
           </a>
         </section>
+        <Testimonials />
       </main>
     </div>
   );
