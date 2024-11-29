@@ -155,9 +155,9 @@ const About = () => {
           <h1 className="text-4xl font-bold text-center mb-8">About Me</h1>
           <div className="max-w-3xl mx-auto text-center mb-12">
             <p className="text-gray-800 leading-relaxed">
-              Hello! I'm Jasjot Singh, a passionate software developer with a
-              keen interest in creating innovative solutions. With over 3 years
-              of experience in the industry, I specialize in MERN. I am
+              Hello! I&apos;m Jasjot Singh, a passionate software developer with
+              a keen interest in creating innovative solutions. With over 3
+              years of experience in the industry, I specialize in MERN. I am
               committed to continuous learning and improvement, always striving
               to enhance my skills and knowledge.
             </p>

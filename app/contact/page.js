@@ -8,7 +8,7 @@ const About = () => {
         <h1 className="text-4xl font-bold text-center mb-8">About Me</h1>
         <div className="max-w-3xl mx-auto text-center mb-12">
           <p className="text-gray-800 leading-relaxed">
-            Hello! I'm [Your Name], a passionate software developer with a keen
+            Hello! I m [Your Name], a passionate software developer with a keen
             interest in creating innovative solutions. With over [X] years of
             experience in the industry, I specialize in [Your Specialization]. I
             am committed to continuous learning and improvement, always striving

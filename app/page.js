@@ -14,7 +14,7 @@ const HomePage = () => {
             <h1 className="text-3xl leading-snug text-gray-800 dark:text-gray-200 md:text-4xl">
               Welcome to
               <br className="hidden lg:block" />{" "}
-              <span className="font-semibold">Jasjot's Blog</span>
+              <span className="font-semibold">Jasjot&apos;s Blog</span>
             </h1>
             <p className="mt-4 text-lg text-gray-500 dark:text-gray-300">
               Confused on which course to take? I have got you covered. Browse
