@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HamIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import {
   Sheet,
   SheetContent,
@@ -13,13 +15,14 @@ import {
 import { ModeToggle } from "./theme-btn";
 
 const Navbar = () => {
+  const router = useRouter();
   return (
     <nav className="bg-background/50 sticky top-0 border-b backdrop-blur- p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-lg font-bold">
           <Link href="/">JasjotBlog</Link>
         </div>
-        <div className="hidden md:flex space-x-4">
+        <div className="hidden md:flex space-x-4 pl-28">
           <Link
             href="/"
             className="hover:scale-105 hover:font-semibold transition-transform duration-300"
@@ -81,10 +84,16 @@ const Navbar = () => {
           </Sheet>
         </div>
         <div className="hidden md:flex space-x-4">
-          <Button className="text-xs" variant="outline">
+          <Button
+            className="text-xs"
+            variant="outline"
+            onClick={() => router.push("/signup")}
+          >
             SignUp
           </Button>
-          <Button variant="outline">LogIn</Button>
+          <Button variant="outline" onClick={() => router.push("/login")}>
+            LogIn
+          </Button>
           <ModeToggle />
         </div>
       </div>
