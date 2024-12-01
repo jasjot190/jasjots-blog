@@ -72,10 +72,18 @@ const Navbar = () => {
                     </Link>
                   </div>
                   <div className="space-x-4 my-6">
-                    <Button variant="outline" className="">
+                    <Button
+                      variant="outline"
+                      onClick={() => router.push("/signup")}
+                    >
                       SignUp
                     </Button>
-                    <Button variant="outline">LogIn</Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => router.push("/login")}
+                    >
+                      LogIn
+                    </Button>
                   </div>
                   <ModeToggle />
                 </SheetDescription>

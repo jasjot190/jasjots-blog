@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 const Courses = () => {
   return (
-    <section className="py-7 text-center container">
+    <section className="py-7 px-5  text-center container">
       <h2 className="text-4xl font-medium">Recommended Courses</h2>
 
       <div className="flex flex-wrap gap-10 justify-center mt-8 text-start">
