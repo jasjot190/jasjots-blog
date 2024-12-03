@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Courses from "@/components/Courses";
-import Link from "next/link";
 import Testimonials from "@/components/Testimonials";
 import React from "react";
 

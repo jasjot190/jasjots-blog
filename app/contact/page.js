@@ -1,43 +1,103 @@
-// src/About.js
+"use client";
 import React from "react";
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import ReCAPTCHA from "react-google-recaptcha";
 
-const About = () => {
+const Contact = () => {
+  function onChange(value) {
+    console.log("Captcha value:", value);
+  }
   return (
-    <section className="py-12 bg-white">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-8">About Me</h1>
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <p className="text-gray-800 leading-relaxed">
-            Hello! I m [Your Name], a passionate software developer with a keen
-            interest in creating innovative solutions. With over [X] years of
-            experience in the industry, I specialize in [Your Specialization]. I
-            am committed to continuous learning and improvement, always striving
-            to enhance my skills and knowledge.
-          </p>
+    <main className="min-h-screen flex flex-col">
+      <Navbar />
+      <section className="min-h-full justify-center items-center flex flex-1">
+        <div className="container bg-gray-100  p-10 md:p-20 flex flex-col md:flex-row  dark:text-gray-800 gap-20 min-h-full rounded-lg shadow-lg items-center flex-1">
+          <div className="flex flex-1 gap-14 flex-col items-center justify-center md:pb-48">
+            <div className="flex flex-col justify-center">
+              <h2 className="font-semibold text-5xl my-5 mx-auto">
+                Your Next Step Starts Here
+              </h2>
+              <p className="text-xl mx-auto">
+                I&#39;m just a message away—drop me a line, and I&#39;ll be in
+                touch!
+              </p>
+            </div>
+            <div>
+              <h2 className="font-semibold text-2xl my-3">Find Me Online</h2>
+              <div className="flex gap-4 justify-center">
+                <Link href={"#"}>
+                  <img className="w-8" src="/githubLogo.svg" alt="" />
+                </Link>
+                <Link href={"#"}>
+                  <img className="w-8" src="/twitterLogo.png" alt="" />
+                </Link>
+                <Link href={"#"}>
+                  <img className="w-8" src="/linkdinLogo.png" alt="" />
+                </Link>
+              </div>
+            </div>
+          </div>
+          <form className="flex-1">
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="name"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                className="shadow appearance-none border rounded w-full py-2 px-3 dark:text-white text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Your name"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Your email"
+              />
+            </div>
+            <div className="mb-6">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="message"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                className="shadow appearance-none border rounded w-full py-2 px-3 dark:text-white text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Your message"
+                rows="5"
+              ></textarea>
+            </div>
+            <ReCAPTCHA
+              sitekey="6LdH9Y4qAAAAACE9Wm20NV1hgoWZA79vwc4qKun5"
+              onChange={onChange}
+            />
+            <div className="flex items-center justify-between">
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white dark:text-gray-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline my-5"
+              >
+                Send Message
+              </button>
+            </div>
+          </form>
         </div>
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-4">My Mission</h2>
-          <p className="text-gray-800 mb-8 leading-relaxed">
-            My mission is to leverage technology to solve real-world problems
-            and make a positive impact. I aim to deliver high-quality software
-            solutions that exceed expectations and contribute to the success of
-            my clients and community.
-          </p>
-          <h2 className="text-3xl font-bold mb-4">Experience</h2>
-          <ul className="list-disc list-inside text-gray-800 mb-8">
-            <li>Experience 1: Description of your experience or project.</li>
-            <li>Experience 2: Description of your experience or project.</li>
-            <li>Experience 3: Description of your experience or project.</li>
-            {/* Add more experiences as needed */}
-          </ul>
-          <h2 className="text-3xl font-bold mb-4">Education</h2>
-          <p className="text-gray-800 mb-8 leading-relaxed">
-            [Your Education Background]
-          </p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 
-export default About;
+export default Contact;

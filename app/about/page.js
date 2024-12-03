@@ -150,11 +150,13 @@ const About = () => {
     <main>
       <Navbar />
 
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-8">About Me</h1>
+      <section className="flex p-12">
+        <div className="mx-auto rounded-xl p-12 bg-gray-100 dark:text-gray-800">
+          <h1 className="text-4xl font-bold text-center mb-8 dark:text-gray-800 ">
+            About Me
+          </h1>
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <p className="text-gray-800 dark:text-gray-200 leading-relaxed">
+            <p className="text-gray-800 leading-relaxed">
               Hello! I&apos;m Jasjot Singh, a passionate software developer with
               a keen interest in creating innovative solutions. With over 3
               years of experience in the industry, I specialize in MERN. I am
@@ -164,14 +166,14 @@ const About = () => {
           </div>
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-4">My Mission</h2>
-            <p className="text-gray-800 dark:text-gray-200 mb-8 leading-relaxed p-2">
+            <p className="text-gray-800 mb-8 leading-relaxed p-2">
               My mission is to leverage technology to solve real-world problems
               and make a positive impact. I aim to deliver high-quality software
               solutions that exceed expectations and contribute to the success
               of my clients and community.
             </p>
             <h2 className="text-3xl font-bold mb-4">Skills</h2>
-            <ul className="list-disc list-inside text-gray-800 dark:text-gray-200 mb-8 p-2">
+            <ul className="list-disc list-inside text-gray-800  mb-8 p-2">
               <li>JavaScript</li>
               <li>NextApp</li>
               <li>React</li>
@@ -182,7 +184,7 @@ const About = () => {
               <li>CSS & HTML</li>
             </ul>
             <h2 className="text-3xl font-bold mb-4">Experience</h2>
-            <ul className="list-disc list-inside text-gray-800 dark:text-gray-200 mb-8">
+            <ul className="list-disc list-inside text-gray-800  mb-8">
               <li className="p-2">
                 <span className="text-2xl">Inventory Data Analytics:</span>
                 <p className="p-2 px-5">
@@ -229,10 +231,10 @@ const About = () => {
                     <h3 className="text-2xl font-medium">
                       {education.institution}
                     </h3>
-                    <p className="text-gray-700 dark:text-gray-200 text-lg px-2 font-medium">
+                    <p className="text-gray-700 text-lg px-2 font-medium">
                       {education.degree} ({education.year})
                     </p>
-                    <p className="text-gray-600 dark:text-gray-200 mt-2 px-2">
+                    <p className="text-gray-600 mt-2 px-2">
                       {education.description}
                     </p>
                   </div>
