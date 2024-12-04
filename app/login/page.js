@@ -2,13 +2,18 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
-
+import { useUserAuth } from "@/_utils/auth-context";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
+  const { gitHubSignIn, googleSignIn, emailSignIn } = useUserAuth();
   function onChange(value) {
     console.log("Captcha value:", value);
   }
+
+  const LogIn = async () => await gitHubSignIn();
+  const googleLogIn = async () => await googleSignIn();
+
   return (
     <main>
       <Navbar />
@@ -18,11 +23,17 @@ const Login = () => {
             Login
           </h2>
           <div className="flex flex-col gap-5">
-            <Button className="rounded-lg py-5 dark:text-gray-200 bg-lime-700 hover:bg-lime-800">
+            <Button
+              onClick={LogIn}
+              className="rounded-lg py-5 dark:text-gray-200 bg-lime-700 hover:bg-lime-800"
+            >
               <img src="/githubLogo.png" alt="" className="w-6 mx-3" />
               Login with GitHub
             </Button>
-            <Button className="rounded-lg py-5 dark:text-gray-200 dark:bg-gray-800">
+            <Button
+              onClick={googleLogIn}
+              className="rounded-lg py-5 dark:text-gray-200 dark:bg-gray-800"
+            >
               {" "}
               <img src="/googlelogo.png" alt="" className="w-6 mx-3" />
               Login with Google

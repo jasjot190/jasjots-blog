@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HamIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useUserAuth } from "@/_utils/auth-context";
+
 import {
   Sheet,
   SheetContent,
