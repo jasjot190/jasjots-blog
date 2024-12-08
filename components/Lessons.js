@@ -3,24 +3,22 @@ import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import { useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 
-const Lessons = () => {
-  const searchParams = useSearchParams();
+const Lessons = ({ cId }) => {
+  console.log(cId);
   const [Lessons, setLessons] = useState([{}]);
-  let courseId = searchParams.get("courseId");
-  const fetchLessons = async (courseId) => {
-    let recievedLessons = await fetch(
-      `http://localhost:5500/lessons?courseId=${courseId}`
-    );
-    let res = await recievedLessons.json();
-    res.sort((a, b) => parseFloat(a.id) - parseFloat(b.id));
-    setLessons(res);
-  };
+  //   const fetchLessons = async (cId) => {
+  //     let recievedLessons = await fetch(
+  //       `http://localhost:5500/lessons?Id=${cId}`
+  //     );
+  //     let res = await recievedLessons.json();
+  //     res.sort((a, b) => parseFloat(a.id) - parseFloat(b.id));
+  //     setLessons(res);
+  //   };
 
-  useEffect(() => {
-    fetchLessons(courseId);
-  }, []);
+  //   useEffect(() => {
+  //     fetchLessons(cId);
+  //   }, []);
 
   useEffect(() => {
     console.log(Lessons);

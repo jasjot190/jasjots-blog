@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import { useState } from "react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 // const courses = [
 //   {
@@ -44,6 +46,7 @@ import Link from "next/link";
 
 const Courses = () => {
   const [courses, setCourses] = useState([{}]);
+  const router = useRouter();
   const fetchCourses = async () => {
     let recievedCourses = await fetch("http://localhost:5500/courses");
     let res = await recievedCourses.json();
@@ -63,7 +66,7 @@ const Courses = () => {
             {courses.map((course, index) => (
               <Link
                 href={{
-                  pathname: "./lessons",
+                  pathname: "/courses/lessons",
                   query: { courseId: course.id },
                 }}
                 key={index}
@@ -77,6 +80,18 @@ const Courses = () => {
                 <h3 className="text-xl font-semibold">{course.Title}</h3>
                 <p className="text-gray-600 mt-2">{course.Instructor}</p>
               </Link>
+              // <Button
+              //   // onClick={router.push("/courses/lessons")}
+              //   className="bg-gray-100 p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 text-gray-800 hover:bg-gray-400 cursor-pointer"
+              // >
+              //   <img
+              //     src={course.Img}
+              //     alt={course.Title}
+              //     className="w-full h-48  rounded-t-lg mb-4"
+              //   />
+              //   <h3 className="text-xl font-semibold">{course.Title}</h3>
+              //   <p className="text-gray-600 mt-2">{course.Instructor}</p>
+              // </Button>
             ))}
           </div>
         </div>
