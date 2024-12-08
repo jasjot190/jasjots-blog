@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <AuthContextProvider>{children}</AuthContextProvider>;
+          <AuthContextProvider>{children}</AuthContextProvider>
         </ThemeProvider>
       </body>
     </html>

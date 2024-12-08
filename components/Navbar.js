@@ -17,6 +17,9 @@ import {
 import { ModeToggle } from "./theme-btn";
 
 const Navbar = () => {
+  const { user, firebaseSignOut } = useUserAuth();
+  const signOut = async () => await firebaseSignOut();
+
   const router = useRouter();
   return (
     <nav className="bg-background/50 sticky top-0 border-b backdrop-blur- p-4">
@@ -74,18 +77,29 @@ const Navbar = () => {
                     </Link>
                   </div>
                   <div className="space-x-4 my-6">
-                    <Button
-                      variant="outline"
-                      onClick={() => router.push("/signup")}
-                    >
-                      SignUp
-                    </Button>
-                    <Button
-                      variant="outline"
-                      onClick={() => router.push("/login")}
-                    >
-                      LogIn
-                    </Button>
+                    {user ? (
+                      <div>
+                        <Button onClick={signOut} variant="destructive">
+                          Logout
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="space-x-4">
+                        <Button
+                          className="text-xs"
+                          variant="outline"
+                          onClick={() => router.push("/signup")}
+                        >
+                          SignUp
+                        </Button>
+                        <Button
+                          variant="outline"
+                          onClick={() => router.push("/login")}
+                        >
+                          LogIn
+                        </Button>
+                      </div>
+                    )}
                   </div>
                   <ModeToggle />
                 </SheetDescription>
@@ -94,16 +108,26 @@ const Navbar = () => {
           </Sheet>
         </div>
         <div className="hidden md:flex space-x-4">
-          <Button
-            className="text-xs"
-            variant="outline"
-            onClick={() => router.push("/signup")}
-          >
-            SignUp
-          </Button>
-          <Button variant="outline" onClick={() => router.push("/login")}>
-            LogIn
-          </Button>
+          {user ? (
+            <div>
+              <Button onClick={signOut} variant="destructive">
+                Logout
+              </Button>
+            </div>
+          ) : (
+            <div className="space-x-4">
+              <Button
+                className="text-xs"
+                variant="outline"
+                onClick={() => router.push("/signup")}
+              >
+                SignUp
+              </Button>
+              <Button variant="outline" onClick={() => router.push("/login")}>
+                LogIn
+              </Button>
+            </div>
+          )}
           <ModeToggle />
         </div>
       </div>

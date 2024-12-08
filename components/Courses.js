@@ -1,62 +1,20 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 const Courses = () => {
+  // const [courses, setCourses] = useState([{}]);
+  // const fetchCourses = async () => {
+  //   let recievedCourses = await fetch("http://localhost:5500/courses");
+  //   let res = await recievedCourses.json();
+  //   setCourses([res[0], res[1], res[2]]);
+  // };
+  // useEffect(() => {
+  //   fetchCourses();
+  // }, []);
   return (
     <section className="py-7 px-5  text-center container">
       <h2 className="text-4xl font-medium">Recommended Courses</h2>
-
       <div className="flex flex-wrap gap-10 justify-center mt-8 text-start">
-        {/* <div className="sm:max-w-[20rem] bg-white border border-gray-200 rounded-lg shadow overflow-hidden">
-          <div className="relative" style={{ height: "200px" }}>
-            <img
-              alt="some alt"
-              loading="lazy"
-              width="288"
-              height="288"
-              decoding="async"
-              data-nimg="1"
-              className="rounded-t-lg object-cover w-full h-full "
-              style={{ color: "transparent" }}
-              src="https://bsf-systems-bucket.s3.us-east-2.amazonaws.com/57ab2250db2cc63"
-            />
-          </div>
-          <div className="p-5 flex flex-col justify-between h-64">
-            <h5 className="text-xl font-bold tracking-tight text-gray-900">
-              Basic
-            </h5>
-            <h3 className="text-sm mb-3 font-medium text-gray-500">
-              Cyber Security
-            </h3>
-            <ul className="text-sm mb-3 font-medium text-gray-500">
-              <li>10GB Storage</li>
-              <li>Basic Support</li>
-              <li>Single User</li>
-              <li>community Access</li>
-              <li>Weekly Updates</li>
-            </ul>
-
-            <div className="flex items-center justify-between">
-              <span className="text-xl font-bold text-cyan-950">$0</span>
-              <Link
-                className="flex items-center gap-2 px-3 py-2 text-sm bg-cyan-950 hover:bg-[#102229] scale-90 hover:scale-100 rounded-md text-white outline-none focus:ring-2 transform active:scale-90 transition-transform"
-                href={""}
-              >
-                Explore
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth="0"
-                  viewBox="0 0 448 512"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path>
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </div> */}
         <div className="sm:max-w-[20rem] bg-white border border-gray-200 rounded-lg shadow overflow-hidden">
           <div className="relative" style={{ height: "200px" }}>
             <img
