@@ -3,7 +3,7 @@ const nextConfig = {
     return [
       {
         // matching all API routes
-        source: "http://54.227.175.142:5500",
+        source: "/api/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
           { key: "Access-Control-Allow-Origin", value: "*" }, // replace this your actual origin
@@ -22,4 +22,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
