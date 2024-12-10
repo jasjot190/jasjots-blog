@@ -13,7 +13,7 @@ const Lessons = () => {
   let courseId = searchParams.get("courseId");
   const fetchLessons = async (courseId) => {
     let recievedLessons = await fetch(
-      `http://localhost:5500/lessons?courseId=${courseId}`
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/courses/lessons?courseId=${courseId}`
     );
     let res = await recievedLessons.json();
     res.sort((a, b) => parseFloat(a.id) - parseFloat(b.id));

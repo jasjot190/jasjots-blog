@@ -48,7 +48,9 @@ const Courses = () => {
   const [courses, setCourses] = useState([{}]);
   const router = useRouter();
   const fetchCourses = async () => {
-    let recievedCourses = await fetch("http://localhost:5500/courses");
+    let recievedCourses = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/courses`
+    );
     let res = await recievedCourses.json();
     setCourses(res);
   };
