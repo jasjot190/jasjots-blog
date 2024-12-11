@@ -5,46 +5,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-
-// const courses = [
-//   {
-//     title: "Course 1",
-//     description: "This is a brief description of Course 1.",
-//     image: "path/to/course1.jpg",
-//   },
-//   {
-//     title: "Course 2",
-//     description: "This is a brief description of Course 2.",
-//     image: "path/to/course2.jpg",
-//   },
-//   {
-//     title: "Course 3",
-//     description: "This is a brief description of Course 3.",
-//     image: "path/to/course3.jpg",
-//   },
-//   {
-//     title: "Course 1",
-//     description: "This is a brief description of Course 1.",
-//     image: "path/to/course1.jpg",
-//   },
-//   {
-//     title: "Course 1",
-//     description: "This is a brief description of Course 1.",
-//     image: "path/to/course1.jpg",
-//   },
-//   {
-//     title: "Course 1",
-//     description: "This is a brief description of Course 1.",
-//     image: "path/to/course1.jpg",
-//   },
-//   {
-//     title: "Course 1",
-//     description: "This is a brief description of Course 1.",
-//     image: "path/to/course1.jpg",
-//   },
-// ];
+import { useUserAuth } from "@/_utils/auth-context";
 
 const Courses = () => {
+  const { user } = useUserAuth();
+
   const [courses, setCourses] = useState([{}]);
   const router = useRouter();
   const fetchCourses = async () => {
@@ -57,8 +22,7 @@ const Courses = () => {
   useEffect(() => {
     fetchCourses();
   }, []);
-
-  return (
+  return user ? (
     <main>
       <Navbar />
       <section className="py-12 h-svh">
@@ -82,23 +46,13 @@ const Courses = () => {
                 <h3 className="text-xl font-semibold">{course.Title}</h3>
                 <p className="text-gray-600 mt-2">{course.Instructor}</p>
               </Link>
-              // <Button
-              //   // onClick={router.push("/courses/lessons")}
-              //   className="bg-gray-100 p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 text-gray-800 hover:bg-gray-400 cursor-pointer"
-              // >
-              //   <img
-              //     src={course.Img}
-              //     alt={course.Title}
-              //     className="w-full h-48  rounded-t-lg mb-4"
-              //   />
-              //   <h3 className="text-xl font-semibold">{course.Title}</h3>
-              //   <p className="text-gray-600 mt-2">{course.Instructor}</p>
-              // </Button>
             ))}
           </div>
         </div>
       </section>
     </main>
+  ) : (
+    router.push("/login")
   );
 };
 

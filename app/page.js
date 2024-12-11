@@ -4,10 +4,11 @@ import Courses from "@/components/Courses";
 import Testimonials from "@/components/Testimonials";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { useUserAuth } from "@/_utils/auth-context";
 
 const HomePage = () => {
   const router = useRouter();
-
+  const { user } = useUserAuth();
   return (
     <div>
       <Navbar />
@@ -21,18 +22,25 @@ const HomePage = () => {
             </h1>
             <p className="mt-4 text-lg text-gray-500 dark:text-gray-300">
               Confused on which course to take? I have got you covered. Browse
-              courses and find out the best course for you. Its free! Code With
-              Harry is my attempt to teach basics and those coding techniques to
-              people in short time which took me ages to learn.
+              courses and find out the best course for you. Its my attempt to
+              teach basics and those coding techniques to people in short time
+              which took me ages to learn.
             </p>
             <div className="flex justify-center lg:justify-start mt-6">
               <button
-                onClick={() => router.push("/courses")}
+                onClick={
+                  user
+                    ? () => router.push("/courses")
+                    : () => router.push("/login")
+                }
                 className="px-3 py-2 lg:px-4 lg:py-3 bg-gray-900 text-gray-200 text-xs font-semibold rounded hover:text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-600 dark:hover:bg-gray-300"
               >
                 Free Courses
               </button>
-              <button className="px-3 py-2 mx-4 lg:px-4 lg:py-3 bg-gray-300 text-gray-900 text-xs font-semibold rounded hover:bg-gray-400">
+              <button
+                onClick={() => router.push("/blogs")}
+                className="px-3 py-2 mx-4 lg:px-4 lg:py-3 bg-gray-300 text-gray-900 text-xs font-semibold rounded hover:bg-gray-400"
+              >
                 Explore Blog
               </button>
             </div>

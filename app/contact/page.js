@@ -3,11 +3,24 @@ import React from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Contact = () => {
+  const [verify, setVerify] = useState(false);
+  const router = useRouter();
+
   function onChange(value) {
-    console.log("Captcha value:", value);
+    if (value) {
+      setVerify(true);
+    }
   }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (verify) {
+      router.push("/");
+    }
+  };
   return (
     <main className="min-h-screen flex flex-col">
       <Navbar />
@@ -26,19 +39,29 @@ const Contact = () => {
             <div>
               <h2 className="font-semibold text-2xl my-3">Find Me Online</h2>
               <div className="flex gap-4 justify-center">
-                <Link href={"#"}>
+                <Link target="_blank" href={"https://github.com/jasjot190/"}>
                   <img className="w-8" src="/githubLogo.svg" alt="" />
                 </Link>
-                <Link href={"#"}>
+                <Link
+                  target="_blank"
+                  href={
+                    "https://www.threads.net/@jasjot190?igshid=NTc4MTIwNjQ2YQ=="
+                  }
+                >
                   <img className="w-8" src="/twitterLogo.png" alt="" />
                 </Link>
-                <Link href={"#"}>
+                <Link
+                  target="_blank"
+                  href={
+                    "https://www.linkedin.com/in/jasjot-singh-998737246?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                  }
+                >
                   <img className="w-8" src="/linkdinLogo.png" alt="" />
                 </Link>
               </div>
             </div>
           </div>
-          <form className="flex-1">
+          <form onSubmit={(e) => handleSubmit(e)} className="flex-1">
             <div className="mb-4">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"

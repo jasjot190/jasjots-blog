@@ -22,7 +22,7 @@ const Navbar = () => {
 
   const router = useRouter();
   return (
-    <nav className="bg-background/50 sticky top-0 border-b backdrop-blur- p-4">
+    <nav className="sticky top-0 border backdrop-blur-lg p-4 z-20">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-lg font-bold">
           <Link href="/">JasjotBlog</Link>
@@ -56,7 +56,7 @@ const Navbar = () => {
               <SheetHeader>
                 <SheetTitle>JasjotBlog</SheetTitle>
                 <SheetDescription>
-                  <div className="flex flex-col gap-5 my- 2">
+                  <div className="flex flex-col gap-5 my-2">
                     <Link
                       href="/"
                       className="hover:scale-105 hover:font-semibold transition-transform duration-300"
@@ -109,7 +109,8 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex space-x-4">
           {user ? (
-            <div>
+            <div className="flex space-x-4">
+              <div className="w-14"></div>
               <Button onClick={signOut} variant="destructive">
                 Logout
               </Button>

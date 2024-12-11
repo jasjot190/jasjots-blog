@@ -5,9 +5,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useUserAuth } from "@/_utils/auth-context";
 
 const Lessons = () => {
+  const { user } = useUserAuth();
   const router = useRouter();
+
   const searchParams = useSearchParams();
   const [Lessons, setLessons] = useState([{}]);
   let courseId = searchParams.get("courseId");
@@ -28,7 +31,7 @@ const Lessons = () => {
     console.log(Lessons);
   }, [Lessons]);
 
-  return (
+  return user ? (
     <main>
       <Navbar />
       <section className="py-12 h-full ">
@@ -55,6 +58,8 @@ const Lessons = () => {
         </div>
       </section>
     </main>
+  ) : (
+    router.push("/login")
   );
 };
 
