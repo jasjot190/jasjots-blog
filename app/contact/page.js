@@ -8,6 +8,9 @@ import { useRouter } from "next/navigation";
 
 const Contact = () => {
   const [verify, setVerify] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const router = useRouter();
 
   function onChange(value) {
@@ -15,9 +18,25 @@ const Contact = () => {
       setVerify(true);
     }
   }
+
+  function sendMessage() {
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/addMessage`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        message: message,
+      }),
+    });
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (verify) {
+      sendMessage();
       router.push("/");
     }
   };
@@ -74,6 +93,7 @@ const Contact = () => {
                 id="name"
                 className="shadow appearance-none border rounded w-full py-2 px-3 dark:text-white text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Your name"
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -88,6 +108,7 @@ const Contact = () => {
                 id="email"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Your email"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mb-6">
@@ -102,6 +123,7 @@ const Contact = () => {
                 className="shadow appearance-none border rounded w-full py-2 px-3 dark:text-white text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Your message"
                 rows="5"
+                onChange={(e) => setMessage(e.target.value)}
               ></textarea>
             </div>
             <ReCAPTCHA

@@ -15,16 +15,10 @@ const Contact = () => {
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/addTestimonial?userName=${userName}&description=${Feedback}`,
       {
         method: "POST",
-        body: JSON.stringify({
-          name: "John Doe",
-          age: 30,
-          location: "San Francisco",
-          isAdmin: true,
-        }),
         headers: {
           "Content-Type": "application/json; charset=UTF-8",
         },
-      }
+      },
     );
   };
   function handleSubmit(e) {
