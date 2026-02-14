@@ -152,7 +152,7 @@ const About = () => {
 
       <section className="flex p-12">
         <div className="mx-auto rounded-xl p-12 bg-gray-100 dark:text-gray-800">
-          <h1 className="text-4xl font-bold text-center mb-8 dark:text-gray-800 ">
+          <h1 className="text-4xl font-bold text-center mb-8 dark:text-gray-800">
             About Me
           </h1>
           <div className="max-w-3xl mx-auto text-center mb-12">
