@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HamIcon } from "lucide-react";
@@ -19,13 +19,35 @@ import { ModeToggle } from "./theme-btn";
 const Navbar = () => {
   const { user, firebaseSignOut } = useUserAuth();
   const signOut = async () => await firebaseSignOut();
-
+  const [isAdmin, setIsAdmin] = useState(false);
   const router = useRouter();
+
+  const checkAdmin = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/isAdmin?userId=${user.email}`,
+      );
+      const data = await response.json();
+      setIsAdmin(data);
+    } catch (error) {
+      console.error("Error checking admin status:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (user) {
+      checkAdmin();
+    }
+  }, [user, isAdmin]);
   return (
     <nav className="sticky top-0 border backdrop-blur-lg p-4 z-20">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-lg font-bold">
-          <Link href="/">JasjotBlog</Link>
+          {isAdmin ? (
+            <Link href="/admin">JasjotBlog</Link>
+          ) : (
+            <Link href="/">JasjotBlog</Link>
+          )}
         </div>
         <div className="hidden md:flex space-x-4 pl-28">
           <Link
