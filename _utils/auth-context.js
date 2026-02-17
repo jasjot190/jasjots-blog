@@ -42,7 +42,7 @@ export const AuthContextProvider = ({ children }) => {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
-      password
+      password,
     );
     const user = userCredential.user;
     await updateProfile(user, { displayName: name });

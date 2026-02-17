@@ -1,21 +1,13 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
+import { useUserAuth } from "@/_utils/auth-context";
+import { useRouter } from "next/navigation";
 
 export default function AdminPanel() {
   const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchMessages();
-
-    const interval = setInterval(() => {
-      fetchMessages();
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const { user } = useUserAuth(); // ← important
+  const router = useRouter();
 
   const fetchMessages = async () => {
     try {
@@ -26,59 +18,48 @@ export default function AdminPanel() {
       setMessages(data);
     } catch (error) {
       console.error("Error fetching messages:", error);
-    } finally {
-      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [user, router]);
+  useEffect(() => {
+    if (!user) return;
+    fetchMessages();
+  }, [user]);
+
+  // If no user, prevent rendering
+  if (!user) return null;
 
   return (
     <div>
       <Navbar />
-
       <main className="container mx-auto p-4">
-        {/* Heading */}
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-6">
-          Admin Panel
-        </h1>
+        <h1 className="text-3xl font-bold mb-6">Admin Panel</h1>
 
-        {/* Card */}
-        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md rounded-lg overflow-hidden">
-          {loading ? (
-            <p className="p-6 text-center text-gray-500 dark:text-gray-300">
-              Loading messages...
-            </p>
-          ) : messages.length === 0 ? (
-            <p className="p-6 text-center text-gray-500 dark:text-gray-300">
-              No messages found.
-            </p>
-          ) : (
-            <table className="min-w-full text-left bg-gray-100 dark:text-gray-800">
-              {/* Table Header */}
-              <thead className="bg-gray-00  text-gray-800">
-                <tr>
-                  <th className="p-4 font-semibold">Name</th>
-                  <th className="p-4 font-semibold">Email</th>
-                  <th className="p-4 font-semibold">Message</th>
+        <div className="bg-white border shadow-md rounded-lg overflow-hidden">
+          <table className="min-w-full text-left">
+            <thead className="bg-gray-200">
+              <tr>
+                <th className="p-4">Name</th>
+                <th className="p-4">Email</th>
+                <th className="p-4">Message</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {messages.map((msg, index) => (
+                <tr key={index} className="border-t">
+                  <td className="p-4">{msg.Name}</td>
+                  <td className="p-4">{msg.Email}</td>
+                  <td className="p-4">{msg.Message}</td>
                 </tr>
-              </thead>
-
-              {/* Table Body */}
-              <tbody>
-                {messages.map((msg, index) => (
-                  <tr
-                    key={index}
-                    className="border-t border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
-                  >
-                    <td className="p-4 text-gray-800">{msg.Name}</td>
-
-                    <td className="p-4 text-gray-800 ">{msg.Email}</td>
-
-                    <td className="p-4 text-gray-800 ">{msg.Message}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
+              ))}
+            </tbody>
+          </table>
         </div>
       </main>
     </div>
