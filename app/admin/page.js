@@ -101,6 +101,8 @@ export default function AdminPanel() {
                   <th className="p-4 font-semibold">Name</th>
                   <th className="p-4 font-semibold">Email</th>
                   <th className="p-4 font-semibold">Message</th>
+                  <th className="p-4 font-semibold">Responded</th>
+                  <th className="p-4 font-semibold">Response</th>
                 </tr>
               </thead>
 
@@ -118,6 +120,12 @@ export default function AdminPanel() {
                     </td>
                     <td className="p-4 text-gray-800 dark:text-gray-200">
                       {msg.Message}
+                    </td>
+                    <td className="p-4 text-gray-800 dark:text-gray-200 text-center">
+                      {msg.Responded.toString()}
+                    </td>
+                    <td className="p-4 text-gray-800 dark:text-gray-200">
+                      {msg.Response}
                     </td>
                   </tr>
                 ))}
