@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import { useUserAuth } from "@/_utils/auth-context";
+import { Button } from "@/components/ui/button";
+
 import { useRouter } from "next/navigation";
 
 export default function AdminPanel() {
@@ -9,6 +11,8 @@ export default function AdminPanel() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [adminChecked, setAdminChecked] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showResponse, setShowResponse] = useState(false);
+  const [selectedMessage, setselectedMessage] = useState("");
 
   const { user } = useUserAuth();
   const router = useRouter();
@@ -78,6 +82,38 @@ export default function AdminPanel() {
 
   return (
     <div>
+      {showResponse ? (
+        <div className="h-screen w-screen fixed top-0 left-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200 shadow-md rounded-lg p-10 md:p-20 relative">
+            <button
+              className="absolute top-4 right-4 text-xl hover:text-gray-900 dark:hover:text-gray-500"
+              onClick={() => {
+                if (showResponse != false) setShowResponse(false);
+                setselectedMessage("");
+              }}
+            >
+              x
+            </button>
+            {selectedMessage.Response === "No response yet." ? (
+              <div>
+                <textarea
+                  name="response"
+                  id=""
+                  placeholder={selectedMessage.Response}
+                  className="h-full w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+                ></textarea>
+                <Button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
+                  Send
+                </Button>
+              </div>
+            ) : (
+              <div>
+                <p>{selectedMessage.Response}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      ) : null}
       <Navbar />
 
       <main className="container mx-auto p-4">
@@ -122,10 +158,32 @@ export default function AdminPanel() {
                       {msg.Message}
                     </td>
                     <td className="p-4 text-gray-800 dark:text-gray-200 text-center">
-                      {msg.Responded.toString()}
+                      {msg.Responded ? (
+                        <span className="text-green-600 dark:text-green-400 font-semibold">
+                          Yes
+                        </span>
+                      ) : (
+                        <span className="text-red-600 dark:text-red-400 font-semibold">
+                          No
+                        </span>
+                      )}
                     </td>
                     <td className="p-4 text-gray-800 dark:text-gray-200">
-                      {msg.Response}
+                      <Button
+                        variant="outline"
+                        onClick={() => {
+                          setselectedMessage(msg);
+                          if (!msg.Response) {
+                            setselectedMessage({
+                              ...msg,
+                              Response: "No response yet.",
+                            });
+                          }
+                          setShowResponse(true);
+                        }}
+                      >
+                        View Response
+                      </Button>
                     </td>
                   </tr>
                 ))}
